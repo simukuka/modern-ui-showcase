@@ -90,7 +90,7 @@ export default function Checkout() {
         return focusFirstError({ terms: 'x' });
       }
       setConfirmed({
-        orderNumber: `SZ-${Date.now().toString().slice(-6)}`,
+        orderNumber: `SZ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
         email: shipping.email,
         lines,
         total,

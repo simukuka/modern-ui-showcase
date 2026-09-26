@@ -5,13 +5,16 @@ import ImageBlock from '../components/ImageBlock';
 import NewsletterForm from '../components/NewsletterForm';
 import ProductCarousel from '../components/ProductCarousel';
 import StarRating from '../components/StarRating';
-import { bestsellers, categories, products } from '../data/products';
+import { categories, products } from '../data/products';
 import { brandStory, hero, instagram, reviews } from '../data/site';
 import { useSeo } from '../hooks/useSeo';
 
 export default function Home() {
   useSeo(undefined);
-  const featured = [...bestsellers, ...products.filter((p) => p.badges.includes('New'))];
+  const featured = [
+    ...products.filter((p) => p.badges.includes('Bestseller')),
+    ...products.filter((p) => p.badges.includes('New') && !p.badges.includes('Bestseller')),
+  ];
 
   return (
     <>

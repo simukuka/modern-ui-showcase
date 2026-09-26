@@ -274,11 +274,11 @@ function ProductView({ product }: { product: Product }) {
           </div>
           <ul className="space-y-4">
             {product.reviews.map((r) => (
-              <li key={r.name} className="rounded-2xl bg-white p-6 shadow-sm">
+              <li key={`${r.name}-${r.date}`} className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <StarRating rating={r.rating} size={14} />
                   <time dateTime={r.date} className="text-xs text-ink-muted">
-                    {new Date(r.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {new Date(r.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
                   </time>
                 </div>
                 <p className="mt-3 leading-relaxed">{r.text}</p>

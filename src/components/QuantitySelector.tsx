@@ -18,6 +18,7 @@ export default function QuantitySelector({ value, onChange, min = 1, label = 'Qu
         <Minus size={14} />
       </button>
       <span className={cn('min-w-[2rem] text-center font-medium tabular-nums', size === 'sm' ? 'text-sm' : '')} aria-live="polite">
+        <span className="sr-only">{label}: </span>
         {value}
       </span>
       <button type="button" className={btn} onClick={() => onChange(value + 1)} disabled={value >= MAX_QUANTITY} aria-label="Increase quantity">

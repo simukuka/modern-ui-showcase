@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { brand } from '../data/site';
 
 const setMeta = (attr: 'name' | 'property', key: string, content: string) => {
@@ -13,6 +14,7 @@ const setMeta = (attr: 'name' | 'property', key: string, content: string) => {
 
 /** Sets per-page <title>, meta description and Open Graph tags. */
 export function useSeo(title?: string, description: string = brand.defaultDescription) {
+  const { pathname, search } = useLocation();
   useEffect(() => {
     const fullTitle = title ? `${title} | ${brand.name}` : `${brand.name} — ${brand.tagline}`;
     document.title = fullTitle;
@@ -20,5 +22,5 @@ export function useSeo(title?: string, description: string = brand.defaultDescri
     setMeta('property', 'og:title', fullTitle);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', window.location.href);
-  }, [title, description]);
+  }, [title, description, pathname, search]);
 }
