@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-cream-50;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white shadow-sm hover:bg-accent-dark hover:shadow-soft;
+  }
+  .btn-outline {
+    @apply btn border border-ink/20 bg-transparent text-ink hover:border-accent hover:text-accent;
+  }
+  .btn-light {
+    @apply btn bg-white text-ink hover:bg-cream-100;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-muted transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+  .input-error {
+    @apply border-red-700 focus:border-red-700 focus:ring-red-700/30;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl;
+  }
+  .icon-btn {
+    @apply relative inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-blush-100 hover:text-accent;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
