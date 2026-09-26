@@ -43,7 +43,7 @@ function Gallery({ product }: { product: Product }) {
   };
 
   return (
-    <div className="flex flex-col-reverse gap-4 md:flex-row">
+    <div className="flex flex-col-reverse gap-4 self-start md:flex-row md:items-start lg:sticky lg:top-28">
       <div role="tablist" aria-label="Product images" aria-orientation="vertical" onKeyDown={onThumbKey} className="no-scrollbar flex gap-3 overflow-x-auto md:w-20 md:flex-col">
         {product.images.map((img, i) => (
           <button
